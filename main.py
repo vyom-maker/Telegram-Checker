@@ -76,8 +76,8 @@ except (FileNotFoundError, json.JSONDecodeError):
     _cfg = {}
 
 # Prefer Railway environment variables; fall back to config.json values.
-BOT_TOKEN         = os.getenv("bot_token") or os.getenv("BOT_TOKEN") or str(_cfg.get("bot_token", ""))
-ADMIN_ID          = int(os.getenv("admin_id") or os.getenv("ADMIN_ID") or _cfg.get("admin_id", 0))
+BOT_TOKEN         = (os.getenv("bot_token") or os.getenv("BOT_TOKEN") or str(_cfg.get("bot_token", ""))).strip()
+ADMIN_ID          = int((os.getenv("admin_id") or os.getenv("ADMIN_ID") or str(_cfg.get("admin_id", 0))).strip())
 DEV_NAME          = str(_cfg.get("dev_name", "Vyom Agrwal"))
 DEV_TAG           = f"Dev: {DEV_NAME}"
 MASTER_THREADS    = int(_cfg.get("master_threads", 30))

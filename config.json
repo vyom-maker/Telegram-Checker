@@ -1,0 +1,28 @@
+{
+  "dev_name": "SamxBlitz",
+  "master_threads": 30,
+  "inboxer_threads": 30,
+  "cookies_threads": 30,
+  "max_lines": 10000,
+  "max_file_size_mb": 20,
+  "proxy_batch_interval": 1200,
+  "proxy_clear_after_batches": 1,
+  "backup_interval": 86400,
+  "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+  "max_retries": 3,
+  "webshare_host": "p.webshare.io",
+  "webshare_port": 80,
+  "webshare_user": "bicmkxza-rotate",
+  "webshare_pass": "6a643oynf17r",
+  "webshare_countries": ["us", "gb", "de", "fr", "nl", "ca", "au"],
+  "user_agents": [
+    "Outlook-Android/2.0",
+    "Mozilla/5.0 (Linux; Android 10; SM-G973F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 9; SM-G975N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
+  ],
+  "builtin_proxies": [
+    "895803e88e09d774.fjt.na.novada.pro:7777:novada194rkD_76nJGA-zone-res:lXm7rbh22AjU"
+  ]
+}

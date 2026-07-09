@@ -69,11 +69,15 @@ except ImportError:
 _BASE = os.path.dirname(os.path.abspath(__file__))
 _CONFIG_PATH = os.path.join(_BASE, "config.json")
 
-with open(_CONFIG_PATH, "r", encoding="utf-8") as f:
-    _cfg = json.load(f)
+try:
+    with open(_CONFIG_PATH, "r", encoding="utf-8") as f:
+        _cfg = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError):
+    _cfg = {}
 
-BOT_TOKEN         = str(_cfg.get("bot_token", ""))
-ADMIN_ID          = int(_cfg.get("admin_id", 0))
+# Prefer Railway environment variables; fall back to config.json values.
+BOT_TOKEN         = os.getenv("bot_token") or os.getenv("BOT_TOKEN") or str(_cfg.get("bot_token", ""))
+ADMIN_ID          = int(os.getenv("admin_id") or os.getenv("ADMIN_ID") or _cfg.get("admin_id", 0))
 DEV_NAME          = str(_cfg.get("dev_name", "Vyom Agrwal"))
 DEV_TAG           = f"Dev: {DEV_NAME}"
 MASTER_THREADS    = int(_cfg.get("master_threads", 30))
@@ -3715,16 +3719,16 @@ def _proxy_scheduler():
 
 if __name__=="__main__":
     if not BOT_TOKEN:
-        console.print("[bold red]❌ BOT_TOKEN not set in config.json![/bold red]")
+        console.print("[bold red]❌ BOT_TOKEN is not set! Provide it via the 'bot_token' environment variable or config.json.[/bold red]")
         sys.exit(1)
     if ADMIN_ID==0:
-        console.print("[bold yellow]⚠️ ADMIN_ID not set in config.json![/bold yellow]")
+        console.print("[bold yellow]⚠️ ADMIN_ID is not set! Provide it via the 'admin_id' environment variable or config.json.[/bold yellow]")
 
     os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
     os.makedirs(RESULTS_DIR, exist_ok=True)
 
     if bot is None:
-        console.print("[bold red]❌ BOT_TOKEN not set in config.json![/bold red]")
+        console.print("[bold red]❌ BOT_TOKEN is not set! Provide it via the 'bot_token' environment variable or config.json.[/bold red]")
         sys.exit(1)
     BOT_START_TIME=time.time()
 
